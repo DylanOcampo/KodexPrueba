@@ -1,0 +1,396 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.Appcontainer {
+  width: 100%;
+  height: 100%;
+  background: #030617
+}
+
+.rowContainer{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  align-items: flex-start;
+}
+.ColumnContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sidebarContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-left: 10px;
+  background-color: #030617;
+  height: 100%;
+  width: 20vw;
+  flex-wrap:  nowrap;
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    width: 5px;
+}
+
+&::-webkit-scrollbar-track {
+    background-color: #eceef2;
+    border-radius: 180px;
+}
+
+&::-webkit-scrollbar-thumb {
+    background-color: #9b9b9b;
+    border-radius: 180px;
+}
+}
+
+.sidebarContainerAni{
+  transition: 1s ease-in-out;
+  -webkit-transition: 1s ease-in-out;
+  -moz-transition: 1s ease-in-out;
+  -ms-transition: 1s ease-in-out;
+  -o-transition: 1s ease-in-out;
+}
+
+.ChatboxContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: #FFFFFF;
+  height: 100vh;
+  width: 100vw;
+}
+
+.sidebarClosed{
+  display: flex;
+  flex-direction: column;
+  align-items: "center";
+  background-color: rgba(49, 24, 24, 0.39);
+  height: 100vh;
+  width: 40px;
+}
+
+.sidebarClosedAni{
+  transition: .5s ease-in-out;
+  -webkit-transition: .5s ease-in-out;
+  -moz-transition: .5s ease-in-out;
+  -ms-transition: .5s ease-in-out;
+  -o-transition: .5s ease-in-out;
+}
+
+.ChatHistoryPrefabContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: #282B3A;
+  height: 85px;
+  width: 95%;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+.ChatHistoryPlaceHolderContainer{
+  height: 80px;
+  width: 95%;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+.sidebarInput{
+  width: 100%;
+  background-color: rgb(255, 255, 255);
+  border-radius: 12px;
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  -ms-border-radius: 12px;
+  -o-border-radius: 12px;
+  border-color: rgb(255, 255, 255);
+}
+
+.ChatHistoryText{
+  padding: 0;
+  border: 0;
+  margin: 0;
+  margin-bottom: 0;
+  color: white;
+  font-size: .95vw;
+}
+
+.ChatHistoryTime{
+  padding: 0;
+  border: 0;
+  margin: 0;
+  margin-bottom: 0;
+  color: white;
+  font-size: .95vw;
+  font-weight: bold;
+}
+
+.TitleText{
+  font-size: 2vw;
+  color: white;
+}
+
+.overrideStyle{
+  background-color: white !important; 
+  border-color: white!important; 
+  height: 100% !important;
+}
+
+.overrideStyleChatContainer{
+  background-color: white !important; 
+  border-color: white!important; 
+}
+
+.overrideStyleInput{
+  background-color: white !important; 
+  border-color: white!important; 
+  padding-left: 40px !important;
+  padding-right: 0px !important;
+  padding-bottom: 20px !important;
+  padding-top: 20px !important;
+  
+}
+.overrideStyleMessageList{
+
+  border-color: rgba(0, 0, 0, 0)!important; 
+  overflow-anchor: auto;
+  height: 1px;
+}
+
+.imgClear{
+  background-color: rgba(255, 255, 255, 0);
+  border-color: rgba(255, 255, 255, 0);
+  display: flex;
+}
+
+.CreateNewChatText{
+  color: white;
+  margin-bottom: 0;
+  font-size: 20px;
+}
+
+.placeHolderOverride{
+  height: 100% !important;
+  width: 100% !important;
+  
+}
+
+.placeHolderOverrideChat{
+  height: 100% !important;
+  width: 100% !important;
+  position: relative;
+  right: 10px;
+}
+
+.messagePlaceHolderContainer{
+  padding-top: 20px;
+  width: 200px;
+  height: 50px;
+  overflow: hidden;
+}
+
+
+.cs-message--incoming .cs-message__content {
+  background-color: #EEEEF8 !important;
+  border-radius: 15 !important;
+  -webkit-border-radius: 15 !important;
+  -moz-border-radius: 15 !important;
+  -ms-border-radius: 15 !important;
+  -o-border-radius: 15 !important;
+}
+
+.cs-message__content{
+  background-color: #7678ED !important;
+}
+
+.cs-message__html-content{
+  color: rgb(0, 0, 0);
+}
+
+.errorMessage{
+  color: red;
+  text-align: center;
+  font-size: .8vw;
+}
+
+.popUpContainer{
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.438);
+  z-index: 1000;
+  top: 0%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content:  center;
+  
+}
+
+.popUpMessage{
+  width: 40vw;
+  height: 30vh;
+
+  background-color: rgb(230, 230, 230);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.178);
+  border-radius: 20px;
+}
+
+.styleButtonPopUpDesktop {
+  background-color: #030617;
+  box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.178);
+  border-color: rgba(255, 255, 255, 0);
+  border-radius: 10px;
+  width: 15vw;
+  height: 8vh;
+  font-size: 1.5vw;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+.styleButtonPopUpLogin {
+  background-image: linear-gradient(rgb(127, 119, 240), rgb(222, 103, 238));
+  box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.178);
+  border-color: rgba(255, 255, 255, 0);
+  border-radius: 5px;
+  width: 100%;
+  height: 100%;
+  min-height: 50px;
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+.styleCancelButtonPopUpDesktop {
+  background-color: #444966;
+  box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.178);
+  border-color: rgba(255, 255, 255, 0);
+  border-radius: 10px;
+  width: 15vw;
+  height: 8vh;
+  font-size: 1.5vw;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+
+.input {
+  width: 85%;
+  height: 45px;
+  padding: 12px;
+  border-radius: 5px;
+  border: 1.5px solid lightgrey;
+  outline: none;
+  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  text-align: center;
+  box-shadow: 0px 0px 20px -18px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+.input:hover {
+  border: 2px solid lightgrey;
+  box-shadow: 0px 0px 20px -17px;
+}
+
+.input:active {
+  transform: scale(0.95);
+}
+
+.input:focus {
+  border: 2px solid grey;
+}
+
+.typingOverride{
+  position: inherit !important;
+  background-color: rgba(0, 0, 0, 0) !important;
+}
+
+.cs-message-input__content-editor-container-input__content-editor{
+  background-color: #EEEEF8 !important;
+  
+}
+.cs-message-input__content-editor-wrapper{
+  background-color:#EEEEF8 !important ;
+  border-radius: 50px !important;
+  -webkit-border-radius: 10px !important;
+  -moz-border-radius: 50px !important;
+  -ms-border-radius: 50px !important;
+  -o-border-radius: 50px !important;
+}
+.cs-message-input__content-editor{
+  background-color:#EEEEF8 !important ;
+  width: 100%;
+  padding-right: 30px;
+  
+}
+
+.cs-message--outgoing .cs-message__content{
+  border-radius: .7em .7em .7em .7em !important;
+  -webkit-border-radius: .7em .7em .7em .7em !important;
+  -moz-border-radius: .7em .7em .7em .7em !important;
+  -ms-border-radius: .7em .7em .7em .7em !important;
+  -o-border-radius: .7em .7em .7em .7em !important;
+}
+
+.cs-message--incoming .cs-message__content{
+  border-radius: .7em .7em .7em .7em !important;
+  -webkit-border-radius: .7em .7em .7em .7em !important;
+  -moz-border-radius: .7em .7em .7em .7em !important;
+  -ms-border-radius: .7em .7em .7em .7em !important;
+  -o-border-radius: .7em .7em .7em .7em !important;
+}
+
+.cs-message--outgoing .cs-message__html-content{
+  color: rgb(255, 255, 255) !important;
+  
+}
+
+.cs-message-input__content-editor-wrapper {
+  padding: 1.2em .9em !important;
+  
+}
+
+.cs-message-input__tools{
+  flex-wrap: wrap;
+  align-content: center;
+  position: relative;
+  right: 60px;
+  
+}
+.section.cs-message.cs-message--outgoing{
+  padding-bottom: 5px;
+}
+
+section.cs-message.cs-message--incoming{
+  padding-bottom: 5px;
+}
