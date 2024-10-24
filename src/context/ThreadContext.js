@@ -16,7 +16,7 @@ const ElementProviderThread= ({ children }) => {
   const changeActive = (newValue, newTitle, newLastMessage,token ) => {
     setActive(newValue);
     setTitle(newTitle);
-    fetch('http://165.22.178.7/api/v1/threads', {
+    fetch('http://165.22.178.7/back/api/v1/threads', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
