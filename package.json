@@ -1,6 +1,6 @@
 {
   "name": "bigfootai",
-  "homepage":"https://kodex-prueba.vercel.app",
+  "homepage": "./",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
