@@ -8,14 +8,12 @@ import React, { useContext } from "react";
 import { ElementContextPopUp } from "./context/PopUpContext";
 import { PopUpPrefab } from "./components/PopUpPrefab";
 import { Test } from "./pages/Test";
-import { useLocation } from "react-router-dom";
+
 
 function App() {
 
   const { value } = useContext(ElementContextPopUp);
-  const location = useLocation();
 
-  console.log("Ruta actual:", location.pathname);
   return (
     <>
     <div className="Appcontainer">
