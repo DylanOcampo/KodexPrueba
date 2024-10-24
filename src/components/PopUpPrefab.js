@@ -25,7 +25,7 @@ export const PopUpPrefab = ({identifier}) => {
 
   const handleEditThread =( ) => {
 
-      fetch('http://165.22.178.7/api/v1/threads', {
+      fetch('http://165.22.178.7/back/api/v1/threads', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -81,7 +81,7 @@ export const PopUpPrefab = ({identifier}) => {
       .catch(error => console.error('Error:', error));
 
     console.log(value);
-    fetch('http://165.22.178.7/api/v1/threads', {
+    fetch('http://165.22.178.7/back/api/v1/threads', {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',

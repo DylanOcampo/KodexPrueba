@@ -45,7 +45,7 @@ export const Sidebar = () => {
     }
   }
   const gotToNewPage= async ()=>{
-    const response = fetch("http://165.22.178.7/api/v1/logout",{
+    const response = fetch("http://165.22.178.7/back/api/v1/logout",{
       method: "POST",
       headers: {
           'Authorization': `Bearer ${userData.access_token}`,
@@ -55,7 +55,7 @@ export const Sidebar = () => {
       .catch(error => console.error('Error:', error))
   }
   const handlethreadsUserByUser= async () => {
-    fetch(`http://165.22.178.7/api/v1/threads/${limit}/${offset}`,{
+    fetch(`http://165.22.178.7/back/api/v1/threads/${limit}/${offset}`,{
       method: "GET",
       headers: {
         'Content-Type': 'application/json',
@@ -75,7 +75,7 @@ export const Sidebar = () => {
     .catch(error => console.error('Error:', error));
   }
     const handleNextThread = async () => {
-      fetch(`http://165.22.178.7/api${prevData.next}`,{
+      fetch(`http://165.22.178.7/back/api${prevData.next}`,{
         method: "GET",
         headers: {
           'Content-Type': 'application/json',

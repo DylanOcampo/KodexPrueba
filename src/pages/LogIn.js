@@ -15,7 +15,7 @@ export const LogIn = () => {
         console.log("1");
         console.log(inputRefEmail.current.value);
             if(inputRefEmail.current.value.trim() !== "" && inputRefPassword.current.value.trim() !== ""){
-                    const response = fetch("http://165.22.178.7/api/v1/login",{
+                    const response = fetch("http://165.22.178.7/back/api/v1/login",{
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json",
