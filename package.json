@@ -1,6 +1,5 @@
 {
   "name": "bigfootai",
-  "homepage":"http://165.22.178.7/kodex/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
