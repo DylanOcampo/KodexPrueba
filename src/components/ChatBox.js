@@ -1,6 +1,5 @@
 import styles from "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
 import {MainContainer, ChatContainer, MessageList, Message, MessageInput, TypingIndicator, InputToolbox, SendButton } from "@chatscope/chat-ui-kit-react";
-import { MessagePlaceHolder } from "./MessagePlaceHolder";
 import { ElementContextThread } from "../context/ThreadContext";
 import React, { useState, useEffect, useContext, useRef } from 'react';
 import { TypingAni } from "./TypingAni";
@@ -10,12 +9,12 @@ import { AuthContext } from "../pages/AuthContext";
 export const ChatBox = () => {
 
     const { Active, Title } = useContext(ElementContextThread);
-    const { userData } = useContext(AuthContext);
+    const { userData, setUserData } = useContext(AuthContext);
     const [UserMessage, setUserMessage] = useState("");
     const [waiting, setWaiting] = useState(false);
     const [messages, setMessages] = useState([]);
     const containerRef = useRef(null);
-    const assistant_id = "asst_lRAD0l8rOXfLbQdUNfHtaEVf";
+    const assistant_id = "asst_zrSOh8NUnr9XkoSAcZOkFP8d";
     const [newMessageToType, setnewMessageToType] = useState();
     let messageList = [];
 
@@ -74,7 +73,8 @@ export const ChatBox = () => {
               'OpenAI-Beta' : 'assistants=v2',
             },
             body: JSON.stringify({
-                "assistant_id" : `${assistant_id}`
+                "assistant_id" : `${assistant_id}`,
+                "model" : "gpt-4o-mini",
             })
           })
           .then(response => response.json())
@@ -197,7 +197,7 @@ export const ChatBox = () => {
 
                     
                     
-                    messageList.push(<img src={result.link} alt="ImgFromAssistant" style={{width: "auto", height: "auto", paddingTop: "15px", paddingBottom: "15px"}}></img>)
+                    messageList.push(<img src={result.link} alt="ImgFromAssistant" style={{ paddingTop: "15px", paddingBottom: "15px", maxWidth: "50vw", maxHeight: "50vh"}}></img>)
 
 
                 }else{

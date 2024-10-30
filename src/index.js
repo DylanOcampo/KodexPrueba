@@ -8,18 +8,20 @@ import { ElementProviderPopUp } from "./context/PopUpContext";
 import { ElementProviderThread } from "./context/ThreadContext";
 import { ElementProviderAccess } from "./context/AccessContext";
 import { AuthProvider } from "./pages/AuthContext";
-
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <AuthProvider>
-  <ElementProviderPopUp>
-    <ElementProviderThread>
-        <ElementProviderAccess>
-            <App />
-        </ElementProviderAccess>
-    </ElementProviderThread>
-  </ElementProviderPopUp>
-  </AuthProvider>
+  <Router>
+    <AuthProvider>
+    <ElementProviderPopUp>
+      <ElementProviderThread>
+          <ElementProviderAccess>
+              <App />
+          </ElementProviderAccess>
+      </ElementProviderThread>
+    </ElementProviderPopUp>
+    </AuthProvider>
+  </Router>
 );
 
 // If you want to start measuring performance in your app, pass a function

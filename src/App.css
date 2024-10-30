@@ -40,3 +40,39 @@
   }
 }
 
+.sideBarMiniMenu{
+  position:absolute;
+  width: 200px;
+  height: auto;
+  z-index: 100;
+  left: 150px;
+  background-color: white;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+@media (min-width: 900px) and (max-width: 1200px) {
+  .sideBarMiniMenu {
+    left: 13vw;
+  }
+}
+
+@media (min-width: 400px) and (max-width: 899px) {
+  .sideBarMiniMenu {
+    left: 14vw;
+  }
+}
+
+
+/* Ancho para pantallas de 400px a 768px (móviles en horizontal) */
+@media (max-width: 600px) {
+  .sideBarMiniMenu {
+    left: 8vw;
+  }
+}
+
+
+

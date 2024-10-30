@@ -2,32 +2,39 @@
 import { Sidebar } from "../components/Sidebar.js"
 import {ChatBox} from "../components/ChatBox.js"
 import { AuthContext } from "../pages/AuthContext";
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
+
 
 import { useNavigate } from "react-router-dom";
 export const Home = () => {
 
-    const { userData } = useContext(AuthContext);
+    const { userData, hasInfoBD } = useContext(AuthContext);
 
     const navigate = useNavigate();
 
-    if(userData=== null || userData===undefined) {
-        return <div className="popUpContainer">
-        <div className="popUpMessage">
-        <h3 style={{ paddingTop: "5%", paddingBottom: "5%", textAlign: "center", fontSize: "1.5vw"}}>Porfavor vuelva a iniciar sesión </h3>
 
-        <div className="rowContainer" style={{width: "100%" , height: "100%", justifyContent: "space-evenly", paddingTop: "5%"}}>
-        <button
-          className="styleCancelButtonPopUpDesktop"
-          onClick={() => {
-            navigate("/");
-          }}
-        >
-          <h3 style={{ color: "white", fontSize: "1.2vw" }}>Aceptar</h3>
-        </button>
-        </div>
-      </div>
-    </div>;
+    if(userData=== null || userData===undefined) {
+        if(hasInfoBD){
+          return <></>;
+        }else{
+          return <div className="popUpContainer">
+            <div className="popUpMessage">
+            <h3 style={{ paddingTop: "5%", paddingBottom: "5%", textAlign: "center", fontSize: "1.5vw"}}>Porfavor vuelva a iniciar sesión </h3>
+
+            <div className="rowContainer" style={{width: "100%" , height: "100%", justifyContent: "space-evenly", paddingTop: "5%"}}>
+            <button
+              className="styleCancelButtonPopUpDesktop"
+              onClick={() => {
+                navigate("/");
+              }}
+            >
+              <h3 style={{ color: "white", fontSize: "1.2vw" }}>Aceptar</h3>
+            </button>
+            </div>
+          </div>
+        </div>;
+        }
+        
     }
 
 

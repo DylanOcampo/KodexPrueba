@@ -16,12 +16,17 @@ export const PopUpPrefab = ({identifier}) => {
   const inputEdit = useRef("");
   const inputNew = useRef("");
   const { changeValuePopUP } = useContext(ElementContextPopUp);
-  const { changeActive, value } = useContext(ElementContextThread);
+  const { changeActive, value, Title, Active, changeTitle } = useContext(ElementContextThread);
   const { userData } = useContext(AuthContext);
   const handleCancelButton = () => {
     changeValuePopUP("");
   };
-  console.log(identifier);
+
+  const UpdateName = () => {
+    if(value === Active ){
+      changeTitle(inputEdit.current.value);
+    }
+  }
 
   const handleEditThread =( ) => {
 
@@ -37,9 +42,12 @@ export const PopUpPrefab = ({identifier}) => {
           'last_message': currentDate,
         })
       })
+        .then(UpdateName())
 
         .catch(error => console.error('Error:', error));
       changeValuePopUP("");
+
+      
 
 }
   const  handleNewThread = async () =>{
@@ -56,7 +64,6 @@ export const PopUpPrefab = ({identifier}) => {
     })
     .then(response => response.json())
       .then(data => {
-        console.log( data);
         changeActive(data.id, inputNew.current.value, inputNew.current.value, userData.access_token)
         return data.id;
       })
@@ -80,7 +87,6 @@ export const PopUpPrefab = ({identifier}) => {
 
       .catch(error => console.error('Error:', error));
 
-    console.log(value);
     fetch('http://165.22.178.7/back/api/v1/threads', {
       method: 'DELETE',
       headers: {
@@ -91,8 +97,9 @@ export const PopUpPrefab = ({identifier}) => {
         'thread_id': value
       })
     })
+      .then(changeValuePopUP("deleteSuccess"))
       .catch(error => console.error('Error:', error));
-    changeValuePopUP("");
+      
 
   }
 
@@ -100,7 +107,7 @@ export const PopUpPrefab = ({identifier}) => {
     return (
       <div className="popUpContainer">
           <div className="popUpMessage">
-          <h3 style={{ paddingTop: "3%", paddingBottom: "1%", fontWeight: "bold", fontSize: "1.5vw"}}>Ingrese título de la conversación</h3>
+          <h3 style={{ paddingTop: "3%", paddingBottom: ".7%", fontWeight: "bold", fontSize: "2vw"}}>Ingrese título de la conversación</h3>
 
 
           <div style={{paddingTop: "0px", paddingBottom: "3%", width: "100%", display: "flex", justifyContent: "center"}}><input
@@ -117,7 +124,7 @@ export const PopUpPrefab = ({identifier}) => {
               handleCancelButton();
             }}
           >
-            <h3 style={{ color: "white" , fontSize: "1.2vw"}}>Cancelar</h3>
+            <h3 style={{ color: "white" , fontSize: "1.2vw" }}>Cancelar</h3>
           </button>
           <button
             className="styleButtonPopUpDesktop"
@@ -163,6 +170,29 @@ export const PopUpPrefab = ({identifier}) => {
     );
   }
 
+  if(identifier === "deleteSuccess"){
+    return (
+      <div className="popUpContainer">
+          <div className="popUpMessage">
+          <h3 style={{ paddingTop: "4%", paddingBottom: "1%", fontSize: "1.5vw"}}>Se ha eliminado con éxito</h3>
+
+
+          <div className="rowContainer" style={{width: "100%" , height: "100%", justifyContent: "space-evenly"}}>
+          <button
+            className="styleButtonPopUpDesktop"
+            onClick={() => {
+              handleCancelButton();
+            }}
+          >
+            <h3 style={{ color: "white", fontSize: "1.2vw" }}>Aceptar</h3>
+          </button>
+  
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   if(identifier=== "edit"){
     return (
       <div className="popUpContainer">
@@ -173,6 +203,7 @@ export const PopUpPrefab = ({identifier}) => {
             ref={inputEdit}
             type="text"
             name="text"
+            placeholder={Title}
             className="input"
           /></div>
           
