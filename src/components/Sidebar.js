@@ -165,6 +165,7 @@ export const Sidebar = () => {
         <div key={prevData}>
         {isOpen ?
             <div className="sidebarParentContainer">
+              <CreateChat></CreateChat>
                 <div className="rowContainer" style={{ width: "100%", paddingTop: "10px", paddingRight: "15px", alignItems: "center", justifyContent: "space-between"}}>
                     <Dropdown className= "iconClearSideBar"  style={{paddingLeft: "20px"}}>
                     <Dropdown.Toggle  as={CustomToggle} variant="success" id="dropdown-basic">
@@ -180,7 +181,7 @@ export const Sidebar = () => {
                 <div className="sidebarContainer" onScroll={handleScroll}>
                   <>{element}</>
                 </div>
-                <CreateChat></CreateChat>
+                
             </div>
 
          : <div className="sidebarClosed">

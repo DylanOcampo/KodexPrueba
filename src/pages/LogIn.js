@@ -34,7 +34,6 @@ export const LogIn = () => {
                 console.log(data);
                 changeUserData(data);
             })
-            .then(data => navigate("/home"))
             .catch(error => console.error('Error:', error));
         }else{
             setIsVisible(true);

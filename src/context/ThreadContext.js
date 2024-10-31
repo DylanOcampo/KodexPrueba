@@ -39,8 +39,7 @@ const ElementProviderThread= ({ children }) => {
 
   const changeActive = (newValue, newTitle, newLastMessage,token ) => {
 
-    setActive(newValue);
-    setTitle(newTitle);
+    
     fetch('http://165.22.178.7/back/api/v1/threads', {
       method: 'POST',
       headers: {
@@ -53,8 +52,15 @@ const ElementProviderThread= ({ children }) => {
         "last_message": newLastMessage
       })
     })
+    .then(response => {
+      if (response.ok) {
+        setActive(newValue)
+        setTitle(newTitle)
+        changeValuePopUP("");
+      }
+    })
       .catch(error => console.error('Error:', error));
-    changeValuePopUP("");
+    
 
   };
 

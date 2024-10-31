@@ -11,11 +11,9 @@ export const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
   useEffect(() => {
     if(userData=== null || userData===undefined) {
-      console.log("2");
       const fetchItems = async () => {
         const savedItems = await getItems();
         if (savedItems !== undefined) {
-          console.log("3");
           setFlag(false);
           if(savedItems.length === 1) {
             setHasInfoBd(true);
@@ -98,9 +96,8 @@ export const AuthProvider = ({ children }) => {
     })
       .then(data => {
         newValue.open_ia_key = data.open_ia_key;
-        console.log(newValue);
         setUserData(newValue);
-
+        navigate("/home")
       })
       .catch(error => {console.error('Error:', error)
 
@@ -111,7 +108,7 @@ export const AuthProvider = ({ children }) => {
   const fetchItems = async () => {
     const savedItems = await getItems();
     if (savedItems !== undefined) {
-      console.log("3");
+
       setFlag(false);
       if(savedItems.length === 1) {
         setHasInfoBd(true);

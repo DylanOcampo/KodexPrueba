@@ -22,6 +22,8 @@ export const ChatBox = () => {
         if(Active !== undefined && Active !== null && Active !== "") {
             setMessages([]);
             fetchMessages();
+        }else{
+            setMessages([]);
         }
     },[Active])
 
@@ -121,7 +123,7 @@ export const ChatBox = () => {
     }
 
     const fetchMessages = () => {
-        fetch(`https://api.openai.com/v1/threads/${Active}/messages`, {
+        fetch(`https://api.openai.com/v1/threads/${Active}/messages?limit=100`, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${userData.open_ia_key}`,
@@ -131,7 +133,7 @@ export const ChatBox = () => {
         })
         .then(response => response.json())
             .then(data => {
-
+                console.log(data);
                 if(data.length !== 0){
                     formatArrayText(data.data.reverse());
 
@@ -139,21 +141,23 @@ export const ChatBox = () => {
             })
             .catch(error => console.error('Error fetching messages:', error));
     }
-    const extractLink = (text) => {
+    const extractLinkAndBracketContent = (text) => {
         const urlRegex = /(https?:\/\/[^\s]+)/g;
         let link = text.match(urlRegex);
         const textWithoutLink = text.replace(urlRegex, '').trim();
+
         if(link !== null){
             if(!isImageUrl(link)){
                 link = null;
             }
         }
+
         return {
             textWithoutLink: textWithoutLink,
             link: link ? link[0] : null,
           };
       }
-
+      
       const isImageUrl = (url) => {
         const cleanUrl = url[0].split('?')[0];
         const clean2 = cleanUrl.split('#')[0]
@@ -170,16 +174,23 @@ export const ChatBox = () => {
 
     function formatText(text) {
         let helper = text;
-        helper.content[0].text.value = text.content[0].text.value.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>') 
+        helper.content[0].text.value = text.content[0].text.value.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
+        helper.content[0].text.value = text.content[0].text.value.replace(/- /g, '• ');
+        helper.content[0].text.value = text.content[0].text.value.replace(/【/g, ' [').replace(/】/g, ']').replace(/\[(\d+):\d+†[^\]]*\]/g, '[$1]');
         return helper;
+    }
+    let isDisabled
+    if(Active !== undefined && Active !== null && Active !== ""){
+        isDisabled = false;
+    }else{
+        isDisabled = true;
     }
 
     if(true){
         messageList.push(<></>)
         if(messages !== undefined){
             for (let index = 0; index < messages.length; index++) {
-                let result = extractLink(messages[index].content[0].text.value);
-
+                let result = extractLinkAndBracketContent(messages[index].content[0].text.value);
                 if(result.link !== null){
                     console.log(result.link);
                     if(index === messages.length - 1 && newMessageToType) {
@@ -195,8 +206,7 @@ export const ChatBox = () => {
                         }
                     }
 
-                    
-                    
+
                     messageList.push(<img src={result.link} alt="ImgFromAssistant" style={{ paddingTop: "15px", paddingBottom: "15px", maxWidth: "50vw", maxHeight: "50vh"}}></img>)
 
 
@@ -249,7 +259,7 @@ export const ChatBox = () => {
                 </MessageList>
                 
                 
-                <MessageInput  onSend={() => {handleMessageToThread()}}  onChange={e =>  setUserMessage(e)}autoFocus placeholder="Type message here" className="overrideStyleInput" attachButton={false} fancyScroll={false}>
+                <MessageInput disabled={isDisabled} onSend={() => {handleMessageToThread()}}  onChange={e =>  setUserMessage(e)}autoFocus placeholder="Type message here" className="overrideStyleInput" attachButton={false} fancyScroll={false}>
                 </MessageInput>
 
                 

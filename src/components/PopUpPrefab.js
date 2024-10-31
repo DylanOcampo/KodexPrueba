@@ -26,6 +26,7 @@ export const PopUpPrefab = ({identifier}) => {
     if(value === Active ){
       changeTitle(inputEdit.current.value);
     }
+    changeValuePopUP("")
   }
 
   const handleEditThread =( ) => {
@@ -42,10 +43,13 @@ export const PopUpPrefab = ({identifier}) => {
           'last_message': currentDate,
         })
       })
-        .then(UpdateName())
-
+      .then(response => {
+        if (response.ok) {
+          UpdateName()
+        }
+      })
         .catch(error => console.error('Error:', error));
-      changeValuePopUP("");
+      
 
       
 
@@ -97,7 +101,13 @@ export const PopUpPrefab = ({identifier}) => {
         'thread_id': value
       })
     })
-      .then(changeValuePopUP("deleteSuccess"))
+      .then(response => {
+        if (response.ok) {
+          changeTitle("");
+          changeActive("");
+          changeValuePopUP("deleteSuccess")
+        }
+      })
       .catch(error => console.error('Error:', error));
       
 

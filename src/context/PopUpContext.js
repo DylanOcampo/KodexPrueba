@@ -10,7 +10,7 @@ const ElementProviderPopUp = ({ children }) => {
   };
 
   return (
-    <ElementContextPopUp.Provider value={{ value, changeValuePopUP }}>
+    <ElementContextPopUp.Provider value={{ value, changeValuePopUP  }}>
       {children}
     </ElementContextPopUp.Provider>
   );

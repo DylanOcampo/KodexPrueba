@@ -9,7 +9,7 @@ export const CreateChat = () => {
     }
 
     return (
-        <div className="rowContainer" style={{justifyContent: "space-evenly", width: "100%", height: "12%", alignItems: "center" }}>
+        <div className="createChatContainer" >
                     <button className= "imgClear" onClick={handleClick} style={{alignItems: "center"}}> <h4 className="CreateNewChatText">CREAR NUEVO CHAT</h4> <img src={add} style={{paddingLeft: "10px"}}></img></button>
         </div>
     )
