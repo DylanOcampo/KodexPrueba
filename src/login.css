@@ -26,6 +26,12 @@
     color: #000;
     text-align: center;
   }
+
+  .input{
+    height: 5vh !important;
+    width: 95% !important;
+    
+  }
   
   .input-container {
     position: relative;
@@ -47,6 +53,8 @@
     border-radius: 0.5rem;
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   }
+
+
   
   .input-container span {
     display: grid;

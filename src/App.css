@@ -46,21 +46,127 @@
   height: auto;
   z-index: 100;
   left: 150px;
-  top: -100px;
-  background-color: white;
+  top: -120px;
+  background-color: rgb(255, 255, 255);
   border-radius: 10px;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   -ms-border-radius: 10px;
   -o-border-radius: 10px;
+}
+
+@media (min-width: 1950px) and (max-width: 2500px) {
+  .sideBarMiniMenuTop {
+    left: 7vw;
+  }
+}
+
+@media (min-width: 1800px) and (max-width: 1949px) {
+  .sideBarMiniMenuTop {
+    left: 6vw;
+  }
+}
+
+@media (min-width: 1700px) and (max-width: 1899px) {
+  .sideBarMiniMenuTop {
+    left: 5vw;
+  }
+}
+
+@media (min-width: 1550px) and (max-width: 1699px) {
+  .sideBarMiniMenuTop {
+    left: 4vw;
+  }
+}
+@media (min-width: 1450px) and (max-width: 1549px) {
+  .sideBarMiniMenuTop {
+    left: 3vw;
+  }
+}
+
+@media (min-width: 1350px) and (max-width: 1449px) {
+  .sideBarMiniMenuTop {
+    left: 2vw;
+  }
+}
+
+@media (min-width: 1250px) and (max-width: 1349px) {
+  .sideBarMiniMenuTop {
+    left: 5vw;
+    width: 150px;
+  }
+}
+
+@media (min-width: 1150px) and (max-width: 1249px) {
+  .sideBarMiniMenuTop {
+    left: 4vw;
+    width: 150px;
+  }
+}
+
+@media (min-width: 1080px) and (max-width: 1149px) {
+  .sideBarMiniMenuTop {
+    left: 2vw;
+    width: 150px;
+  }
+}
+
+@media (min-width: 951px) and (max-width: 1079px) {
+  .sideBarMiniMenuTop {
+    left: 1vw;
+    width: 150px;
+  }
+}
+
+@media (min-width: 900px) and (max-width: 950px) {
+  .sideBarMiniMenuTop {
+    left: 10vw;
+    width: 150px;
+  }
+}
+
+@media (min-width: 820px) and (max-width: 899px) {
+  .sideBarMiniMenuTop {
+    left: 8vw;
+    width: 150px;
+  }
+}
+
+@media (min-width: 700px) and (max-width: 819px) {
+  .sideBarMiniMenuTop {
+    left: 5vw;
+    width: 150px;
+  }
+}
+
+@media (min-width: 650px) and (max-width: 699px) {
+  .sideBarMiniMenuTop {
+    left: 3vw;
+    width: 150px;
+  }
+}
+
+
+@media (min-width: 550px) and (max-width: 649px) {
+  .sideBarMiniMenuTop {
+    left: 1vw;
+    width: 120px;
+  }
+}
+
+@media (min-width: 400px) and (max-width: 549px) {
+  .sideBarMiniMenuTop {
+    left: .1vw;
+    width: 120px;
+  }
 }
 
 .sideBarMiniMenu{
   position:absolute;
-  width: 200px;
+  width: 150px;
+  left: 11vw;
   height: auto;
   z-index: 100;
-  left: 150px;
   background-color: white;
   border-radius: 10px;
   -webkit-border-radius: 10px;
@@ -69,25 +175,123 @@
   -o-border-radius: 10px;
 }
 
-@media (min-width: 900px) and (max-width: 1200px) {
-  .sideBarMiniMenu {
-    left: 13vw;
-  }
-}
-
-@media (min-width: 400px) and (max-width: 899px) {
-  .sideBarMiniMenu {
-    left: 14vw;
-  }
+.buttonFont{
+  font-size: 20px;
+  color: white;
 }
 
 
-/* Ancho para pantallas de 400px a 768px (móviles en horizontal) */
-@media (max-width: 600px) {
+@media (min-width: 1950px) and (max-width: 2500px) {
+  .sideBarMiniMenu {
+    left: 10vw;
+  }
+}
+
+@media (min-width: 1800px) and (max-width: 1949px) {
+  .sideBarMiniMenu {
+    left: 9vw;
+  }
+}
+
+@media (min-width: 1700px) and (max-width: 1899px) {
   .sideBarMiniMenu {
     left: 8vw;
   }
 }
+
+@media (min-width: 1550px) and (max-width: 1699px) {
+  .sideBarMiniMenu {
+    left: 7vw;
+  }
+}
+@media (min-width: 1450px) and (max-width: 1549px) {
+  .sideBarMiniMenu {
+    left: 6vw;
+  }
+}
+
+@media (min-width: 1350px) and (max-width: 1449px) {
+  .sideBarMiniMenu {
+    left: 5vw;
+  }
+}
+
+@media (min-width: 1250px) and (max-width: 1349px) {
+  .sideBarMiniMenu {
+    left: 5vw;
+    width: 150px;
+  }
+}
+
+@media (min-width: 1150px) and (max-width: 1249px) {
+  .sideBarMiniMenu {
+    left: 4vw;
+    width: 150px;
+  }
+}
+
+@media (min-width: 1080px) and (max-width: 1149px) {
+  .sideBarMiniMenu {
+    left: 2vw;
+    width: 150px;
+  }
+}
+
+@media (min-width: 951px) and (max-width: 1079px) {
+  .sideBarMiniMenu {
+    left: 1vw;
+    width: 150px;
+  }
+}
+
+@media (min-width: 900px) and (max-width: 950px) {
+  .sideBarMiniMenu {
+    left: 10vw;
+    width: 150px;
+  }
+}
+
+@media (min-width: 820px) and (max-width: 899px) {
+  .sideBarMiniMenu {
+    left: 8vw;
+    width: 150px;
+  }
+}
+
+@media (min-width: 700px) and (max-width: 819px) {
+  .sideBarMiniMenu {
+    left: 5vw;
+    width: 150px;
+  }
+}
+
+@media (min-width: 650px) and (max-width: 699px) {
+  .sideBarMiniMenu {
+    left: 3vw;
+    width: 150px;
+  }
+}
+
+
+@media (min-width: 550px) and (max-width: 649px) {
+  .sideBarMiniMenu {
+    left: 1vw;
+    width: 120px;
+  }
+}
+
+@media (min-width: 400px) and (max-width: 549px) {
+  .sideBarMiniMenu {
+    left: .1vw;
+    width: 120px;
+  }
+}
+
+
+
+/* Ancho para pantallas de 400px a 768px (móviles en horizontal) */
+
+
 
 
 

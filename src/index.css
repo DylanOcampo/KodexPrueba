@@ -37,29 +37,46 @@ code {
   align-items: center;
   justify-content: flex-start;
   height: 100vh;
-  width: 400px;
+  width:  19vw;
+  z-index: 2;
 }
 
-@media (max-width: 768px) {
+@media (min-width: 1800px) and (max-width: 30000x) {
   .sidebarParentContainer {
-    width: 50vw; /* Ancho para dispositivos móviles */
+    width: 340px;
   }
 }
+
+@media (min-width: 400px) and (max-width: 950px) {
+  .sidebarParentContainer {
+    width: 30vw;
+  }
+}
+
+
 .createChatContainer{
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
   align-items: center;
-  width: 400px;
-  position: absolute;
+  width: 19vw;
+  height: 100px;
   bottom: 0;
-  height: 10%;
 }
 
-@media (max-width: 768px) {
+.inputPopUp{
+  padding-top: 1%;
+
+  width: 90%;
+  display: flex;
+  justify-content: center;
+}
+
+
+@media (min-width: 400px) and (max-width: 950px)  {
   .createChatContainer {
-    width: 50vw; /* Ancho para dispositivos móviles */
+    width: 30vw; /* Ancho para dispositivos móviles */
   }
 }
 
@@ -78,7 +95,7 @@ code {
 }
 
 &::-webkit-scrollbar-track {
-    background-color: #eceef2;
+    background-color: #000000;
     border-radius: 180px;
 }
 
@@ -99,10 +116,49 @@ code {
 .ChatboxContainer{
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   background-color: #FFFFFF;
   height: 100vh;
-  width: 100vw;
+  width: 81vw;
+  z-index: 1;
+}
+@media (min-width: 1800px) and (max-width: 30000x) {
+  .ChatboxContainer {
+    width: 100%;
+  }
+}
+
+
+
+@media (min-width: 400px) and (max-width: 950px) {
+  .ChatboxContainer {
+    width: 70vw;
+  }
+}
+
+.ChatboxContainerClose{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #FFFFFF;
+  height: 100vh;
+  width: 97vw;
+  z-index: 1;
+}
+
+
+
+
+@media (min-width: 701px) and (max-width: 1100px) {
+  .ChatboxContainerClose {
+    width: 92vw;
+  }
+}
+
+@media (min-width: 400px) and (max-width: 700px) {
+  .ChatboxContainerClose {
+    width: 89vw;
+  }
 }
 
 .sidebarClosed{
@@ -111,7 +167,19 @@ code {
   align-items: "center";
   background-color: rgba(49, 24, 24, 0.39);
   height: 100vh;
-  width: 40px;
+  width: 3vw;
+}
+
+@media (min-width: 701px) and (max-width: 1100px) {
+  .sidebarClosed {
+    width: 8vw;
+  }
+}
+
+@media (min-width: 400px) and (max-width: 700px) {
+  .sidebarClosed {
+    width: 11vw;
+  }
 }
 
 .sidebarClosedAni{
@@ -127,7 +195,7 @@ code {
   flex-direction: column;
   align-items: flex-start;
   background-color: #282B3A;
-  height: 100px;
+  height: 72px;
   width: 95%;
   border-radius: 10px;
   -webkit-border-radius: 10px;
@@ -135,6 +203,33 @@ code {
   -ms-border-radius: 10px;
   -o-border-radius: 10px;
 }
+
+.ChatHistoryPrefabContainer:hover{
+
+  background-color: #151827;
+
+}
+
+.onTopButtons{
+  position: fixed;
+  bottom: 100px;
+  padding: 10px;
+  border-radius: 50%;
+  background-color: #ededf8;
+  cursor: pointer;
+  z-index: 100;
+  height: 45px;
+  width: 45px;
+
+  border-color: rgba(131,131,183,255);
+  border-style:solid;
+  border-width: thin;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+
 
 .ChatHistoryPlaceHolderContainer{
   height: 80px;
@@ -163,7 +258,19 @@ code {
   margin: 0;
   margin-bottom: 0;
   color: white;
-  font-size: 1.5vh;
+  font-size: .8vw;
+}
+
+@media (min-width: 740px) and (max-width: 1900px) {
+  .ChatHistoryText {
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 510px) and (max-width: 739px) {
+  .ChatHistoryText {
+    font-size: 12px;
+  }
 }
 
 .ChatHistoryTime{
@@ -172,14 +279,68 @@ code {
   margin: 0;
   margin-bottom: 0;
   color: white;
-  font-size: 1.5vh;
+  font-size: .8vw;
   font-weight: bold;
+  line-height: 1.2 !important;
+}
+
+@media (min-width: 740px) and (max-width: 1900px) {
+  .ChatHistoryTime {
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 510px) and (max-width: 739px) {
+  .ChatHistoryTime {
+    font-size: 12px;
+  }
+}
+
+.MiniMenuText{
+  
+  font-size: 15px;
+  font-weight: bold;
+  padding-left: 15px;
+  padding-top: 10px;
+}
+
+@media (min-width: 740px) and (max-width: 1900px) {
+  .MiniMenuText {
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 510px) and (max-width: 739px) {
+  .MiniMenuText {
+    font-size: 12px;
+  }
 }
 
 .TitleText{
-  font-size: 2vw;
+  font-size: 25px;
   color: white;
 }
+
+@media (min-width: 100px) and (max-width: 1800px) {
+  .TitleText {
+    font-size: 20px;
+  }
+}
+
+.TitleTextChat{
+  font-size: 2vw;
+  text-align: center;
+  font-weight: bold;
+  
+}
+
+@media (min-width: 510px) and (max-width: 1100px) {
+  .TitleTextChat {
+    font-size: 20px;
+  }
+}
+
+
 
 .overrideStyle{
   background-color: white !important; 
@@ -193,7 +354,7 @@ code {
 }
 
 .overrideStyleInput{
-  background-color: white !important; 
+  background-color: white !important;
   border-color: white!important; 
   padding-left: 40px !important;
   padding-right: 0px !important;
@@ -320,14 +481,21 @@ code {
 }
 
 .popUpMessage{
-  width: 40vw;
-  padding-bottom: 20px;
+  width: 35vw;
+  min-width: 450px;
+  max-width: 620px;
   background-color: rgb(230, 230, 230);
   display: flex;
   align-items: center;
   flex-direction: column;
   box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.178);
   border-radius: 20px;
+  height: 32vh;
+  justify-content: space-evenly;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+
 }
 
 .styleButtonPopUpDesktop {
@@ -335,14 +503,16 @@ code {
   box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.178);
   border-color: rgba(255, 255, 255, 0);
   border-radius: 10px;
-  width: 15vw;
-  height: 10%;
+  width: 13vw;
+  min-width: 180px;
+  max-width: 190px;
+  height: 73px;
   padding-top: 10px;
   font-size: 1.5vw;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -o-border-radius: 10px;
+  -webkit-border-radius:10;
+  -moz-border-radius:10;
+  -ms-border-radius:10;
+  -o-border-radius:10;
 }
 
 .styleButtonPopUpLogin {
@@ -354,6 +524,7 @@ code {
   height: 100%;
   padding-top: 10px;
   min-height: 50px;
+  min-width: 180px;
   -webkit-border-radius: 100px;
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
@@ -365,8 +536,11 @@ code {
   box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.178);
   border-color: rgba(255, 255, 255, 0);
   border-radius: 10px;
-  width: 15vw;
-  height: 10%;
+  width: 13vw;
+  min-width: 180px;
+  max-width: 190px;
+  max-height: 170px;
+  height: 73px;
   padding-top: 10px;
   font-size: 1.5vw;
   -webkit-border-radius: 10px;
@@ -412,10 +586,12 @@ code {
 
 .cs-message-input__content-editor-container-input__content-editor{
   background-color: #EEEEF8 !important;
+  color: #000000;
   
 }
 .cs-message-input__content-editor-wrapper{
   background-color:#EEEEF8 !important ;
+  color: #000000;
   border-radius: 50px !important;
   -webkit-border-radius: 10px !important;
   -moz-border-radius: 50px !important;
@@ -424,6 +600,7 @@ code {
 }
 .cs-message-input__content-editor{
   background-color:#EEEEF8 !important ;
+  color: #000000;
   width: 100%;
   padding-right: 30px;
   
@@ -514,18 +691,67 @@ section.cs-message.cs-message--incoming{
   margin: auto;
 }
 
+.WelcomeTextContainer{
+  position: relative;
+  top: -60%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding-left: 20%;
+  padding-right: 20%;
+}
 
+@media (max-width: 800px) {
+  .WelcomeTextContainer {
+    top: -65%; /* Ancho para dispositivos móviles */
+  }
+}
 
+.WelcomeText{
+  color: gray;
+  font-weight: 400;
+  font-size: 20px;
+}
+
+@media (min-width: 700px) and(max-width: 800px) {
+  .WelcomeText {
+    font-size: 10px; 
+  }
+}
+
+@media (min-width: 801px) and (max-width: 1100px){
+  .WelcomeText {
+    font-size: 15px; 
+  }
+}
 
 
 .sidebarMiniMenuButton{
-  background-color: rgba(255, 255, 255, 0);
+  background-color:rgb(255, 255, 255);
   border-color: rgba(255, 255, 255, 0);
   display: flex;
   width: 100%;
+  max-width: 150px;
   align-items: center;
   align-content: center;
   justify-content: flex-start;
   padding: 5px;
   
+}
+
+.sidebarMiniMenuButton:hover{
+
+  background-color: #dddddd;
+
+}
+
+section.cs-message.cs-message--incoming{
+  padding-bottom: 5px !important;
+}
+
+.no-styles {
+  background-color: transparent;
+  color: black;
 }

@@ -17,7 +17,7 @@ export const AuthProvider = ({ children }) => {
           setFlag(false);
           if(savedItems.length === 1) {
             setHasInfoBd(true);
-            fetch('http://165.22.178.7/back/api/v1/openaikey', {
+            fetch('https://kodexai-bigfoot.coolnerdypipol.com/back/api/v1/openaikey', {
               method: 'GET',
               headers: {
                 'Content-Type': 'application/json',
@@ -80,7 +80,7 @@ export const AuthProvider = ({ children }) => {
     items.userData.open_ia_key = "";
     saveItem(items)
 
-    fetch('http://165.22.178.7/back/api/v1/openaikey', {
+    fetch('https://kodexai-bigfoot.coolnerdypipol.com/back/api/v1/openaikey', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -112,7 +112,7 @@ export const AuthProvider = ({ children }) => {
       setFlag(false);
       if(savedItems.length === 1) {
         setHasInfoBd(true);
-        fetch('http://165.22.178.7/back/api/v1/openaikey', {
+        fetch('https://kodexai-bigfoot.coolnerdypipol.com/back/api/v1/openaikey', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',

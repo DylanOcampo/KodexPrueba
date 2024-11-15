@@ -19,16 +19,16 @@ export const Home = () => {
         }else{
           return <div className="popUpContainer">
             <div className="popUpMessage">
-            <h3 style={{ paddingTop: "5%", paddingBottom: "5%", textAlign: "center", fontSize: "1.5vw"}}>Porfavor vuelva a iniciar sesión </h3>
+            <h3 style={{color: "black", fontWeight: "bold", paddingTop: "1%", textAlign: "center"}}>Porfavor vuelva a iniciar sesión </h3>
 
-            <div className="rowContainer" style={{width: "100%" , height: "100%", justifyContent: "space-evenly", paddingTop: "5%"}}>
+            <div className="rowContainer" style={{width: "100%" , height: "40%", justifyContent: "space-evenly", paddingTop: "5%"}}>
             <button
               className="styleCancelButtonPopUpDesktop"
               onClick={() => {
                 navigate("/");
               }}
             >
-              <h3 style={{ color: "white", fontSize: "1.2vw" }}>Aceptar</h3>
+              <h3 className="buttonFont">Aceptar</h3>
             </button>
             </div>
           </div>

@@ -10,6 +10,7 @@ const ElementProviderThread= ({ children }) => {
   const [flag, setFlag] = useState(true);
   const [Active, setActive] = useState("");
   const [Title, setTitle] = useState("");
+  const [TitlePopUp, setTitlePopUp] = useState("");
 
   const changeValueThread = (newValue) => {
     setValue(newValue);
@@ -18,6 +19,11 @@ const ElementProviderThread= ({ children }) => {
   const changeTitle = (newValue) => {
     setTitle(newValue);
   }
+
+  const changeTitlePopUp = (newValue) => {
+    setTitlePopUp(newValue);
+  }
+
   useEffect(() => {
     const fetchItems = async () => {
       const savedItems = await getItems();
@@ -39,8 +45,8 @@ const ElementProviderThread= ({ children }) => {
 
   const changeActive = (newValue, newTitle, newLastMessage,token ) => {
 
-    
-    fetch('http://165.22.178.7/back/api/v1/threads', {
+
+    fetch('https://kodexai-bigfoot.coolnerdypipol.com/back/api/v1/threads', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -79,7 +85,7 @@ const ElementProviderThread= ({ children }) => {
   };
 
   return (
-    <ElementContextThread.Provider value={{ value, changeValueThread, Active, changeActive, updateActive, Title, changeTitle }}>
+    <ElementContextThread.Provider value={{ value, changeValueThread, Active, changeActive, updateActive, Title, changeTitle, setActive, changeTitlePopUp, TitlePopUp  }}>
       {children}
     </ElementContextThread.Provider>
   );

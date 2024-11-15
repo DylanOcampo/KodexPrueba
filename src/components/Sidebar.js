@@ -3,16 +3,18 @@ import { ChatHistoryPlaceholder } from "./ChatHistoryPlaceHolder"
 import logout from "../img/salir.png";
 import account from "../img/account.svg";
 import sidebar from "../img/sidebar.svg";
+import logoBlanco from "../img/LogoBlanco.svg";
 import { useNavigate } from "react-router-dom";
 import React, { useState, useEffect, useRef, useContext} from "react";
 import{ CreateChat} from "./CreateChat";
 import Dropdown from 'react-bootstrap/Dropdown';
 import { AuthContext } from "../pages/AuthContext";
 import useIndexedDB from '../hooks/useIndexedDB';
-
+import { ElementContextSidebar } from "../context/SidebarContext";
 import { ElementContextPopUp } from "../context/PopUpContext";
 export const Sidebar = () => {
   const {value} = useContext(ElementContextPopUp);
+  const {changeValueSideBar, valueSB, setScrollPos} = useContext(ElementContextSidebar);
   const { getItems, deleteItem } = useIndexedDB();
   const [prevData, setData] = useState("");
   const [offset] = useState(0);
@@ -36,18 +38,17 @@ export const Sidebar = () => {
   const handleScroll = (e) => {
     let tolerance = 1;
     const bottom = e.target.scrollHeight - e.target.scrollTop - tolerance <= e.target.clientHeight;
-    
+    setScrollPos(e.target.scrollTop);
     if (bottom && flag) {
       if(prevData.next != null && prevData.next !== ""){
         setFlag(false);
-        console.log("next")
         handleNextThread();
       }
       
     }
   }
   const gotToNewPage= async ()=>{
-    const response = fetch("http://165.22.178.7/back/api/v1/logout",{
+    const response = fetch("https://kodexai-bigfoot.coolnerdypipol.com/back/api/v1/logout",{
       method: "POST",
       headers: {
           'Authorization': `Bearer ${userData.access_token}`,
@@ -57,7 +58,7 @@ export const Sidebar = () => {
       .catch(error => console.error('Error:', error))
   }
   const handlethreadsUserByUser= async () => {
-    fetch(`http://165.22.178.7/back/api/v1/threads/${limit}/${offset}`,{
+    fetch(`https://kodexai-bigfoot.coolnerdypipol.com/back/api/v1/threads/${limit}/${offset}`,{
       method: "GET",
       headers: {
         'Content-Type': 'application/json',
@@ -71,13 +72,22 @@ export const Sidebar = () => {
     return response.json();
     })
     .then(data => {
+        
         setData(data);
+        let helper = data;
+        if(data.thread_bundles.length > 9){
+          handleNextThread(helper);
+        }
     })
     .then()
     .catch(error => console.error('Error:', error));
   }
-    const handleNextThread = async () => {
-      fetch(`http://165.22.178.7/back/api${prevData.next}`,{
+    const handleNextThread = async (data) => {
+      let url = `https://kodexai-bigfoot.coolnerdypipol.com/back/api${prevData.next}`;
+      if(data !== undefined){
+        url =`https://kodexai-bigfoot.coolnerdypipol.com/back/api${data.next}`;
+      }
+      fetch(url,{
         method: "GET",
         headers: {
           'Content-Type': 'application/json',
@@ -108,7 +118,6 @@ export const Sidebar = () => {
           <img src={account} alt="sidebar" className="iconSideBar"></img>
         </a>
       ));
-    const[isOpen, setIsOpen] = useState(true)
     const[isDisplay, setIsDisplay] = useState(false)
     const botonRef = useRef(null);
     const navigate = useNavigate()
@@ -156,16 +165,20 @@ export const Sidebar = () => {
       let element;
       if(prevData !== undefined && prevData !== null && prevData !== ""){
         element = (prevData.thread_bundles.map(item => (
-          <ChatHistoryPrefab date={item.updated_at} name={item.title} threadId={item.thread_id} internalId={item.id}></ChatHistoryPrefab>)))
+          <ChatHistoryPrefab
+          date={item.updated_at}
+          name={item.title}
+          threadId={item.thread_id}
+          internalId={item.id}></ChatHistoryPrefab>)))
       }else{
         element = (<><ChatHistoryPlaceholder></ChatHistoryPlaceholder> <ChatHistoryPlaceholder></ChatHistoryPlaceholder> <ChatHistoryPlaceholder></ChatHistoryPlaceholder></>)
       }
 
     return (
         <div key={prevData}>
-        {isOpen ?
+        {valueSB ?
             <div className="sidebarParentContainer">
-              <CreateChat></CreateChat>
+              
                 <div className="rowContainer" style={{ width: "100%", paddingTop: "10px", paddingRight: "15px", alignItems: "center", justifyContent: "space-between"}}>
                     <Dropdown className= "iconClearSideBar"  style={{paddingLeft: "20px"}}>
                     <Dropdown.Toggle  as={CustomToggle} variant="success" id="dropdown-basic">
@@ -175,20 +188,20 @@ export const Sidebar = () => {
                         <Dropdown.Item onClick={() => gotToNewPage()}><img src={logout} alt="close" style={{color: "black", paddingRight: "20px", width: "35px", paddingBottom: "2.2%"}}></img>Cerrar sesión</Dropdown.Item>
                     </Dropdown.Menu>
                     </Dropdown>
-                    <h2 className="TitleText" style={{ textAlign: "center", fontSize: "20px", paddingTop: "2.2%"}}>{userData.user.name}</h2>
-                    <img src= {sidebar} alt="sidebar" className="iconSideBar"   onClick={()=> setIsOpen(!isOpen)}></img>
+                    <h2 className="TitleText" style={{ textAlign: "center", fontSize: "20px", paddingTop: "2.2%"}}><img src={logoBlanco} style={{height: "2vw"}}></img></h2>
+                    <img src= {sidebar} alt="sidebar" className="iconSideBar"   onClick={()=> changeValueSideBar(!valueSB)}></img>
                 </div>
                 <div className="sidebarContainer" onScroll={handleScroll}>
                   <>{element}</>
                 </div>
-                
+                <CreateChat></CreateChat>
             </div>
 
          : <div className="sidebarClosed">
 
             <div className="rowContainer" style={{ paddingTop: "30px"}}>
 
-             <img src= {sidebar} alt="sidebar" className="iconSideBar" onClick={()=> setIsOpen(!isOpen)}></img>
+             <img src= {sidebar} alt="sidebar" className="iconSideBar" onClick={()=> changeValueSideBar(!valueSB)}></img>
             </div>
 
          </div>

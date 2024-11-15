@@ -1,7 +1,7 @@
 import { ElementContextPopUp } from "../context/PopUpContext";
 import React, { useContext } from "react";
 import { ElementContextThread } from "../context/ThreadContext";
-
+import useIndexedDB from '../hooks/useIndexedDB';
 import { useRef } from "react";
 import { AuthContext } from "../pages/AuthContext";
 
@@ -15,8 +15,9 @@ export const PopUpPrefab = ({identifier}) => {
 
   const inputEdit = useRef("");
   const inputNew = useRef("");
+  const { getItems, saveItem, deleteItem } = useIndexedDB();
   const { changeValuePopUP } = useContext(ElementContextPopUp);
-  const { changeActive, value, Title, Active, changeTitle } = useContext(ElementContextThread);
+  const { changeActive, value, Title, Active, changeTitle, setActive, TitlePopUp } = useContext(ElementContextThread);
   const { userData } = useContext(AuthContext);
   const handleCancelButton = () => {
     changeValuePopUP("");
@@ -31,7 +32,7 @@ export const PopUpPrefab = ({identifier}) => {
 
   const handleEditThread =( ) => {
 
-      fetch('http://165.22.178.7/back/api/v1/threads', {
+      fetch('https://kodexai-bigfoot.coolnerdypipol.com/back/api/v1/threads', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -91,7 +92,7 @@ export const PopUpPrefab = ({identifier}) => {
 
       .catch(error => console.error('Error:', error));
 
-    fetch('http://165.22.178.7/back/api/v1/threads', {
+    fetch('https://kodexai-bigfoot.coolnerdypipol.com/back/api/v1/threads', {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -103,9 +104,14 @@ export const PopUpPrefab = ({identifier}) => {
     })
       .then(response => {
         if (response.ok) {
-          changeTitle("");
-          changeActive("");
-          changeValuePopUP("deleteSuccess")
+          if(Active === value){
+            changeTitle("");
+            setActive("");
+            deleteDb();
+          }
+          
+          changeValuePopUP("deleteSuccess");
+          
         }
       })
       .catch(error => console.error('Error:', error));
@@ -113,28 +119,39 @@ export const PopUpPrefab = ({identifier}) => {
 
   }
 
+  const deleteDb = async ( ) => {
+    let holder =  await getItems();
+    let item = {};
+    item.userData = holder[0].userData;
+    item.ThreadId = "";
+    item.ThreadName = "";
+    deleteItem(holder[0].id);
+    saveItem(item);
+  }
+
   if(identifier === "new") {
     return (
       <div className="popUpContainer">
           <div className="popUpMessage">
-          <h3 style={{ paddingTop: "3%", paddingBottom: ".7%", fontWeight: "bold", fontSize: "2vw"}}>Ingrese título de la conversación</h3>
+          <div style={{paddingTop: "10px"}}>
+          <h3 className="TitleText" style={{color: "black", fontWeight: "bold", paddingTop: "1%" , textAlign: "center"}}>Ingresa el título de la conversación</h3>
+          </div>
 
-
-          <div style={{paddingTop: "0px", paddingBottom: "3%", width: "100%", display: "flex", justifyContent: "center"}}><input
+          <div className="inputPopUp"><input
             ref={inputNew}
             type="text"
             name="text"
             className="input"
           /></div>
           
-          <div className="rowContainer" style={{width: "100%" , height: "100%", justifyContent: "space-evenly"}}>
+          <div className="rowContainer" style={{width: "100%" , justifyContent: "space-evenly"}}>
           <button
             className="styleCancelButtonPopUpDesktop"
             onClick={() => {
               handleCancelButton();
             }}
           >
-            <h3 style={{ color: "white" , fontSize: "1.2vw" }}>Cancelar</h3>
+            <h3 className="buttonFont">Cancelar</h3>
           </button>
           <button
             className="styleButtonPopUpDesktop"
@@ -142,7 +159,7 @@ export const PopUpPrefab = ({identifier}) => {
               handleNewThread();
             }}
           >
-            <h3 style={{ color: "white", fontSize: "1.2vw" }}>Aceptar</h3>
+            <h3 className="buttonFont">Aceptar</h3>
           </button>
           </div>
         </div>
@@ -154,17 +171,18 @@ export const PopUpPrefab = ({identifier}) => {
     return (
       <div className="popUpContainer">
           <div className="popUpMessage">
-          <h3 style={{ paddingTop: "5%", paddingBottom: "5%", textAlign: "center", fontSize: "1.5vw"}}>¿Está seguro que desea eliminar la conversación? </h3>
-
+          <div style={{paddingTop: "10px"}}>
+          <h3 className="TitleText" style={{color: "black", fontWeight: "bold", paddingTop: "1%", textAlign: "center"}}>¿Está seguro que desea eliminar la conversación? </h3>
+          </div>
           
-          <div className="rowContainer" style={{width: "100%" , height: "100%", justifyContent: "space-evenly"}}>
+          <div className="rowContainer" style={{width: "100%", justifyContent: "space-evenly"}}>
           <button
             className="styleButtonPopUpDesktop"
             onClick={() => {
               handleCancelButton();
             }}
           >
-            <h3 style={{ color: "white", fontSize: "1.2vw"}}>Cancelar</h3>
+            <h3 className="buttonFont">Cancelar</h3>
           </button>
           <button
             className="styleCancelButtonPopUpDesktop"
@@ -172,7 +190,7 @@ export const PopUpPrefab = ({identifier}) => {
               handleEliminateThread();
             }}
           >
-            <h3 style={{ color: "white", fontSize: "1.2vw" }}>Eliminar</h3>
+            <h3 className="buttonFont">Eliminar</h3>
           </button>
           </div>
         </div>
@@ -184,17 +202,18 @@ export const PopUpPrefab = ({identifier}) => {
     return (
       <div className="popUpContainer">
           <div className="popUpMessage">
-          <h3 style={{ paddingTop: "4%", paddingBottom: "1%", fontSize: "1.5vw"}}>Se ha eliminado con éxito</h3>
+          <div style={{paddingTop: "10px"}}>
+          <h3 className="TitleText" style={{color: "black", fontWeight: "bold", paddingTop: "1%", textAlign: "center"}}>Se ha eliminado con éxito</h3>
+          </div>
 
-
-          <div className="rowContainer" style={{width: "100%" , height: "100%", justifyContent: "space-evenly"}}>
+          <div className="rowContainer" style={{width: "100%" , justifyContent: "space-evenly"}}>
           <button
             className="styleButtonPopUpDesktop"
             onClick={() => {
               handleCancelButton();
             }}
           >
-            <h3 style={{ color: "white", fontSize: "1.2vw" }}>Aceptar</h3>
+            <h3 className="buttonFont">Aceptar</h3>
           </button>
   
           </div>
@@ -207,24 +226,26 @@ export const PopUpPrefab = ({identifier}) => {
     return (
       <div className="popUpContainer">
           <div className="popUpMessage">
-          <h3 style={{ paddingTop: "4%", paddingBottom: "1%", fontSize: "1.5vw"}}>Ingrese nuevo título de la conversación</h3>
-
-          <div style={{paddingTop: "0px", paddingBottom: "2%", width: "100%", display: "flex", justifyContent: "center"}}><input
+            <div style={{paddingTop: "10px"}}>
+          <h3 className="TitleText" style={{color: "black", fontWeight: "bold", paddingTop: "1%", textAlign: "center"}}>Ingresa el título de la conversación</h3>
+          </div>
+          <div className="inputPopUp"><input
             ref={inputEdit}
             type="text"
             name="text"
-            placeholder={Title}
+            placeholder={TitlePopUp}
             className="input"
+            
           /></div>
           
-          <div className="rowContainer" style={{width: "100%" , height: "100%", justifyContent: "space-evenly"}}>
+          <div className="rowContainer" style={{width: "100%", paddingTop: "10px", justifyContent: "space-evenly"}}>
           <button
             className="styleCancelButtonPopUpDesktop"
             onClick={() => {
               handleCancelButton();
             }}
           >
-            <h3 style={{ color: "white", fontSize: "1.2vw" }}>Cancelar</h3>
+            <h3 className="buttonFont">Cancelar</h3>
           </button>
           <button
             className="styleButtonPopUpDesktop"
@@ -232,7 +253,7 @@ export const PopUpPrefab = ({identifier}) => {
               handleEditThread();
             }}
           >
-            <h3 style={{ color: "white", fontSize: "1.2vw" }}>Aceptar</h3>
+            <h3 className="buttonFont">Aceptar</h3>
           </button>
           </div>
         </div>

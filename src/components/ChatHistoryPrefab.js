@@ -5,14 +5,17 @@ import edit from "../img/editar.png";
 import delate from "../img/eliminar.png";
 import { ElementContextThread } from "../context/ThreadContext";
 import {FloatingOverlay} from '@floating-ui/react';
+import { ElementContextSidebar } from "../context/SidebarContext";
+import { ElementContextAni } from '../context/AniContext';
 export const ChatHistoryPrefab = ({date, name, threadId}) => {
     const componentRef = useRef(null);
     const { changeValuePopUP } = useContext(ElementContextPopUp);
+    const { scrollPos } = useContext(ElementContextSidebar);
     const [isClicked, setIsClicked] = useState(false);
-    const {updateActive, changeValueThread, changeTitle } = useContext(ElementContextThread);
+    const {updateActive, changeValueThread, changeTitlePopUp } = useContext(ElementContextThread);
     const [ignoreNextClick, setIgnoreNextClick] = useState(false);
     const [position, setPosition] = useState();
-
+    const {changeAniStop, AniStop} = useContext(ElementContextAni);
     const updatePosition = () => {
         if (componentRef.current) {
           const rect = componentRef.current.getBoundingClientRect();
@@ -30,7 +33,7 @@ export const ChatHistoryPrefab = ({date, name, threadId}) => {
 
     const handleClickEdit = () => {
         changeValueThread(threadId);
-        changeTitle(name);
+        changeTitlePopUp(name);
         changeValuePopUP("edit");
         setIsClicked(false);
     } 
@@ -76,14 +79,15 @@ export const ChatHistoryPrefab = ({date, name, threadId}) => {
         helper = "";
     }
     let MiniMenu;
-    if(window.innerHeight/2 > position){
+
+    if(window.innerHeight/2 > position- scrollPos){
         MiniMenu = (<FloatingOverlay style={{position: "static"}}>
-            <div className="sideBarMiniMenu">
-                <div className="rowContainer" style={{justifyContent: "flex-start", paddingLeft: "10px"}}>
-                    <button className="sidebarMiniMenuButton" onClick={handleClickEdit}><img src={edit} style={{width: "25px"}} alt="edit"></img> <p style={{paddingTop: "10px", fontSize: "1.2vw", paddingLeft: "10px"}}>Editar</p></button>
+            <div className="sideBarMiniMenu" >
+                <div className="rowContainer" style={{justifyContent: "center"}}>
+                    <button className="sidebarMiniMenuButton" style={{borderRadius: "10px"}}onClick={handleClickEdit}><img src={edit} style={{width: "25px", paddingLeft: "5px"}} alt="edit"></img> <p className="MiniMenuText">Editar</p></button>
                 </div>
-                <div className="rowContainer" style={{paddingLeft: "10px"}}>
-                    <button className="sidebarMiniMenuButton" onClick={handleClickDelete}><img src={delate} style={{width: "25px"}} alt="delete"></img> <p style={{paddingTop: "10px", fontSize: "1.2vw", paddingLeft: "10px"}}>Eliminar</p></button>
+                <div className="rowContainer" style={{justifyContent: "center"}}>
+                    <button className="sidebarMiniMenuButton" style={{borderRadius: "10px"}} onClick={handleClickDelete}><img src={delate} style={{width: "25px", paddingLeft: "5px"}} alt="delete"></img> <p className="MiniMenuText">Eliminar</p></button>
                 </div>
 
             </div> 
@@ -91,18 +95,26 @@ export const ChatHistoryPrefab = ({date, name, threadId}) => {
     }else{
         MiniMenu = (<FloatingOverlay style={{position: "static"}}>
             <div className="sideBarMiniMenuTop" >
-                <div className="rowContainer" style={{justifyContent: "flex-start", paddingLeft: "10px"}}>
-                    <button className="sidebarMiniMenuButton" onClick={handleClickEdit}><img src={edit} style={{width: "25px"}} alt="edit"></img> <p style={{paddingTop: "10px", fontSize: "1.2vw", paddingLeft: "10px"}}>Editar</p></button>
+                <div className="rowContainer" style={{justifyContent: "center"}}>
+                    <button className="sidebarMiniMenuButton" style={{borderRadius: "10px"}} onClick={handleClickEdit}><img src={edit} style={{width: "25px", paddingLeft: "5px"}} alt="edit"></img> <p className="MiniMenuText">Editar</p></button>
                 </div>
-                <div className="rowContainer" style={{paddingLeft: "10px"}}>
-                    <button className="sidebarMiniMenuButton" onClick={handleClickDelete}><img src={delate} style={{width: "25px"}} alt="delete"></img> <p style={{paddingTop: "10px", fontSize: "1.2vw", paddingLeft: "10px"}}>Eliminar</p></button>
+                <div className="rowContainer" style={{justifyContent: "center"}}>
+                    <button className="sidebarMiniMenuButton" style={{borderRadius: "10px"}} onClick={handleClickDelete}><img src={delate} style={{width: "25px", paddingLeft: "5px"}} alt="delete"></img> <p className="MiniMenuText">Eliminar</p></button>
                 </div>
 
             </div> 
             </FloatingOverlay>)
     }
 
-    const handleClick = () => {
+    const handleClick = (e) => {
+        
+        if(e.target.className === "" || e.target.className === "sidebarMiniMenuButton"  || e.target.className === "MiniMenuText"){
+            return;
+        }
+        if(!AniStop){
+            changeAniStop(true);
+        }
+        
         updateActive(threadId, name);
     };
 
@@ -123,16 +135,16 @@ export const ChatHistoryPrefab = ({date, name, threadId}) => {
     const sidebarRef = useRef(null);
     useOutsideAlerter(sidebarRef, setIsClicked, setIgnoreNextClick);
     return (
-        <div  ref= {componentRef} style={{paddingTop: "10px", width: "100%", paddingRight: "5px"}}>
+        <div  ref= {componentRef} style={{paddingTop: "10px", width: "100%", paddingRight: "5px", paddingBottom: "10px"}}>
             <div onClick={handleClick} className="ChatHistoryPrefabContainer" style={{position: "relative"}}>
                 <div className="rowContainer" style={{justifyContent: "space-between", width: "100%", height:"100%", alignItems: "center"}}>
                     <div className="ColumnContainer" style={{paddingLeft: "20px", paddingRight: "5px", alignItems: "flex-start", height:"100%", justifyContent:"center"}}>
-                        <p className="ChatHistoryTime" style={{paddingBottom: "5px"}}>{name}</p>
+                        <p className="ChatHistoryTime" style={{paddingBottom: "5px"}}>{name.length > 16 ? `${name.substring(0, 20)}...` : name}</p>
                         <p className="ChatHistoryText">{helper}</p>
                     </div>
                     <div style={{paddingRight: "10px"}}>
                         <button className="imgClear" onClick={handleClickMiniMenu}><img src={more}></img></button>
-                        {isClicked && 
+                        {isClicked &&
                         <div ref={sidebarRef}>{MiniMenu} </div>
                         }
                     </div>

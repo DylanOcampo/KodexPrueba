@@ -1,16 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext  } from 'react';
 import { Message, } from "@chatscope/chat-ui-kit-react";
 
+import { ElementContextAni } from '../context/AniContext';
 
 
 export const TypingAni = ({WordToType, scroll}) => {
+    
     const [value, setValue] = useState("");
     const [count, setCount] = useState(0);
-    
     const str = WordToType.helper;
-
-    useEffect(() => { 
+    const {valueAni, changeValueAni} = useContext(ElementContextAni);
+    useEffect(() => {
+        if(!valueAni){
+            changeValueAni(true);
+        }
         if(str === value){
+            changeValueAni(false);
             return;
         }
         const timeout = setTimeout(() => {
@@ -23,12 +28,10 @@ export const TypingAni = ({WordToType, scroll}) => {
                     }
                 }
             }
-        }, 20)
-        
+        }, 5)
     })
 
     return (
-
         <Message key={"0101010"} model={{
                             message: value,
                             sender: "assistant",
