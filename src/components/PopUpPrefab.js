@@ -172,7 +172,7 @@ export const PopUpPrefab = ({identifier}) => {
       <div className="popUpContainer">
           <div className="popUpMessage">
           <div style={{paddingTop: "10px"}}>
-          <p className="TitleText" style={{color: "black", fontWeight: "bold", paddingTop: "1%", textAlign: "center"}}>¿Está seguro que desea eliminar la conversación? </p>
+          <p className="TitleText" style={{color: "black", paddingTop: "1%", textAlign: "center"}}>¿Está seguro que desea eliminar la conversación? </p>
           </div>
           
           <div className="rowContainer" style={{width: "95%" , justifyContent: "space-between"}}>
@@ -206,7 +206,7 @@ export const PopUpPrefab = ({identifier}) => {
           <p className="TitleText" style={{color: "black", paddingTop: "1%", textAlign: "center"}}>Se ha eliminado con éxito</p>
           </div>
 
-          <div className="rowContainer" style={{width: "95%" , justifyContent: "space-between"}}>
+          <div className="rowContainer" style={{width: "95%" , justifyContent: "center"}}>
           <button
             className="styleButtonPopUpDesktop"
             onClick={() => {
