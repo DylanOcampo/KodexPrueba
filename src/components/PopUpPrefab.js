@@ -134,7 +134,7 @@ export const PopUpPrefab = ({identifier}) => {
       <div className="popUpContainer">
           <div className="popUpMessage">
           <div style={{paddingTop: "10px"}}>
-          <h3 className="TitleText" style={{color: "black", fontWeight: "bold", paddingTop: "1%" , textAlign: "center"}}>Ingresa el título de la conversación</h3>
+          <p className="TitleText" style={{color: "black", paddingTop: "1%" , textAlign: "center"}}>Ingresa el título de la conversación</p>
           </div>
 
           <div className="inputPopUp"><input
@@ -172,7 +172,7 @@ export const PopUpPrefab = ({identifier}) => {
       <div className="popUpContainer">
           <div className="popUpMessage">
           <div style={{paddingTop: "10px"}}>
-          <h3 className="TitleText" style={{color: "black", fontWeight: "bold", paddingTop: "1%", textAlign: "center"}}>¿Está seguro que desea eliminar la conversación? </h3>
+          <p className="TitleText" style={{color: "black", fontWeight: "bold", paddingTop: "1%", textAlign: "center"}}>¿Está seguro que desea eliminar la conversación? </p>
           </div>
           
           <div className="rowContainer" style={{width: "95%" , justifyContent: "space-between"}}>
@@ -203,7 +203,7 @@ export const PopUpPrefab = ({identifier}) => {
       <div className="popUpContainer">
           <div className="popUpMessage">
           <div style={{paddingTop: "10px"}}>
-          <h3 className="TitleText" style={{color: "black", fontWeight: "bold", paddingTop: "1%", textAlign: "center"}}>Se ha eliminado con éxito</h3>
+          <p className="TitleText" style={{color: "black", paddingTop: "1%", textAlign: "center"}}>Se ha eliminado con éxito</p>
           </div>
 
           <div className="rowContainer" style={{width: "95%" , justifyContent: "space-between"}}>
@@ -227,7 +227,7 @@ export const PopUpPrefab = ({identifier}) => {
       <div className="popUpContainer">
           <div className="popUpMessage">
             <div style={{paddingTop: "10px"}}>
-          <h3 className="TitleText" style={{color: "black", fontWeight: "bold", paddingTop: "1%", textAlign: "center"}}>Ingresa el título de la conversación</h3>
+          <p className="TitleText" style={{color: "black", paddingTop: "1%", textAlign: "center"}}>Ingresa el título de la conversación</p>
           </div>
           <div className="inputPopUp"><input
             ref={inputEdit}

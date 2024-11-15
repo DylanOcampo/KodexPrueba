@@ -318,6 +318,7 @@ code {
 
 .TitleText{
   font-size: 25px;
+  font-weight: 450;
   color: white;
 }
 
@@ -733,7 +734,6 @@ section.cs-message.cs-message--incoming{
   border-color: rgba(255, 255, 255, 0);
   display: flex;
   width: 100%;
-  max-width: 150px;
   align-items: center;
   align-content: center;
   justify-content: flex-start;
