@@ -144,7 +144,7 @@ export const PopUpPrefab = ({identifier}) => {
             className="input"
           /></div>
           
-          <div className="rowContainer" style={{width: "100%" , justifyContent: "space-evenly"}}>
+          <div className="rowContainer" style={{width: "95%" , justifyContent: "space-between"}}>
           <button
             className="styleCancelButtonPopUpDesktop"
             onClick={() => {
@@ -175,7 +175,7 @@ export const PopUpPrefab = ({identifier}) => {
           <h3 className="TitleText" style={{color: "black", fontWeight: "bold", paddingTop: "1%", textAlign: "center"}}>¿Está seguro que desea eliminar la conversación? </h3>
           </div>
           
-          <div className="rowContainer" style={{width: "100%", justifyContent: "space-evenly"}}>
+          <div className="rowContainer" style={{width: "95%" , justifyContent: "space-between"}}>
           <button
             className="styleButtonPopUpDesktop"
             onClick={() => {
@@ -206,7 +206,7 @@ export const PopUpPrefab = ({identifier}) => {
           <h3 className="TitleText" style={{color: "black", fontWeight: "bold", paddingTop: "1%", textAlign: "center"}}>Se ha eliminado con éxito</h3>
           </div>
 
-          <div className="rowContainer" style={{width: "100%" , justifyContent: "space-evenly"}}>
+          <div className="rowContainer" style={{width: "95%" , justifyContent: "space-between"}}>
           <button
             className="styleButtonPopUpDesktop"
             onClick={() => {
@@ -238,7 +238,7 @@ export const PopUpPrefab = ({identifier}) => {
             
           /></div>
           
-          <div className="rowContainer" style={{width: "100%", paddingTop: "10px", justifyContent: "space-evenly"}}>
+          <div className="rowContainer" style={{width: "95%" , justifyContent: "space-between"}}>
           <button
             className="styleCancelButtonPopUpDesktop"
             onClick={() => {
