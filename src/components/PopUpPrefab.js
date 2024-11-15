@@ -151,7 +151,7 @@ export const PopUpPrefab = ({identifier}) => {
               handleCancelButton();
             }}
           >
-            <h3 className="buttonFont">Cancelar</h3>
+            <p className="buttonFont">Cancelar</p>
           </button>
           <button
             className="styleButtonPopUpDesktop"
@@ -159,7 +159,7 @@ export const PopUpPrefab = ({identifier}) => {
               handleNewThread();
             }}
           >
-            <h3 className="buttonFont">Aceptar</h3>
+            <p className="buttonFont">Aceptar</p>
           </button>
           </div>
         </div>
@@ -182,7 +182,7 @@ export const PopUpPrefab = ({identifier}) => {
               handleCancelButton();
             }}
           >
-            <h3 className="buttonFont">Cancelar</h3>
+            <p className="buttonFont">Cancelar</p>
           </button>
           <button
             className="styleCancelButtonPopUpDesktop"
@@ -190,7 +190,7 @@ export const PopUpPrefab = ({identifier}) => {
               handleEliminateThread();
             }}
           >
-            <h3 className="buttonFont">Eliminar</h3>
+            <p className="buttonFont">Eliminar</p>
           </button>
           </div>
         </div>
@@ -213,7 +213,7 @@ export const PopUpPrefab = ({identifier}) => {
               handleCancelButton();
             }}
           >
-            <h3 className="buttonFont">Aceptar</h3>
+            <p className="buttonFont">Aceptar</p>
           </button>
   
           </div>
@@ -245,7 +245,7 @@ export const PopUpPrefab = ({identifier}) => {
               handleCancelButton();
             }}
           >
-            <h3 className="buttonFont">Cancelar</h3>
+            <p className="buttonFont">Cancelar</p>
           </button>
           <button
             className="styleButtonPopUpDesktop"
@@ -253,7 +253,7 @@ export const PopUpPrefab = ({identifier}) => {
               handleEditThread();
             }}
           >
-            <h3 className="buttonFont">Aceptar</h3>
+            <p className="buttonFont">Aceptar</p>
           </button>
           </div>
         </div>

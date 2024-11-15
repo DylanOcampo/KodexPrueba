@@ -506,8 +506,8 @@ code {
   border-radius: 10px;
   width: 13vw;
   min-width: 180px;
-  max-width: 190px;
-  height: 73px;
+  max-width: 260px;
+  max-height: 170px;
   padding-top: 10px;
   font-size: 1.5vw;
   -webkit-border-radius:10;
@@ -539,9 +539,9 @@ code {
   border-radius: 10px;
   width: 13vw;
   min-width: 180px;
-  max-width: 190px;
+  max-width: 260px;
   max-height: 170px;
-  height: 73px;
+  height: 65px;
   padding-top: 10px;
   font-size: 1.5vw;
   -webkit-border-radius: 10px;

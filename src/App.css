@@ -176,8 +176,10 @@
 }
 
 .buttonFont{
-  font-size: 20px;
+  font-size: 23px;
   color: white;
+  font-weight: bold;
+  line-height: 1.5;
 }
 
 
